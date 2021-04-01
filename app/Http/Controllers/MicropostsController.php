@@ -56,3 +56,4 @@ class MicropostsController extends Controller
         return back();
     }
 }
+
