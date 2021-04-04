@@ -25,16 +25,20 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'users/{id}'], function () {
-        Route::post('like', 'LikeController@store')->name('like.like'); 
-        Route::delete('like', 'LikeController@destroy')->name('like.unlike'); 
-        Route::get('favorite', 'MicropostsController@favorite')->name('like.favorite');
         Route::post('follow', 'UserFollowController@store')->name('user.follow');
         Route::delete('unfollow', 'UserFollowController@destroy')->name('user.unfollow');
         Route::get('followings', 'UsersController@followings')->name('users.followings');
         Route::get('followers', 'UsersController@followers')->name('users.followers');
+        Route::get('favorites', 'UsersController@favorites')->name('users.favorites');
     });
 
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
+    
+     // 追加
+    Route::group(['prefix' => 'microposts/{id}'], function () {
+        Route::post('favorite', 'LikeController@store')->name('users.favorite');
+        Route::delete('unfavorite', 'LikeController@destroy')->name('users.unfavorite');
+    });
 
     Route::resource('microposts', 'MicropostsController', ['only' => ['store', 'destroy']]);
 });

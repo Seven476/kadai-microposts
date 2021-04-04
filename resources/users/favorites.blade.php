@@ -1,16 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
-    <div class="row">
-        <aside class="col-sm-4">
-            {{-- ユーザ情報 --}}
-            @include('users.card')
-        </aside>
-        <div class="col-sm-8">
-            {{-- タブ --}}
-            @include('users.navtabs')
-            
-            @if (count($microposts) > 0)
+@if (count($microposts) > 0)
                 <ul class="list-unstyled">
                     @foreach ($microposts as $micropost)
                         <li class="media">
@@ -30,8 +18,6 @@
                 </ul>
                 {{-- ページネーションのリンク --}}
                 {{ $microposts->links() }}
-            @endif
-        </div>
-    </div>
-@endsection
+@endif
+
 

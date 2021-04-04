@@ -16,7 +16,7 @@
                     </div>
                     <div>
                         @if (\Auth::check())
-                            @include('like.like_button')
+                            @include('favorite.favorite_button')
                         @endif
                         @if (Auth::id() == $micropost->user_id)
                             {{-- 投稿削除ボタンのフォーム --}}

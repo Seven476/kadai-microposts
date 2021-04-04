@@ -54,23 +54,6 @@ class MicropostsController extends Controller
         // 前のURLへリダイレクトさせる
         return back();
     }
-    
-     public function favorite($id)
-    {
-        // idの値でユーザを検索して取得
-        $micropost = Microposts::findOrFail($id);
 
-        // 関係するモデルの件数をロード
-        $micropost->loadRelationshipCounts();
-
-        // ユーザのお気に入り一覧を取得
-        $favorite = $micropost->favorite()->paginate(10);
-
-        // フォロー一覧ビューでそれらを表示
-        return view('like.favorite', [
-            'micropost' => $micropost,
-            'microposts' => $favorite,
-        ]);
-    }
 }
 

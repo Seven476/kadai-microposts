@@ -15,7 +15,7 @@ class LikeController extends Controller
     public function store($id)
     {
         // 認証済みユーザ（閲覧者）が、 idのユーザをフォローする
-        \Auth::user()->like($id);
+        \Auth::user()->favorite($id);
         // 前のURLへリダイレクトさせる
         return back();
     }
@@ -29,7 +29,7 @@ class LikeController extends Controller
     public function destroy($id)
     {
         // 認証済みユーザ（閲覧者）が、 idのユーザをアンフォローする
-        \Auth::user()->unlike($id);
+        \Auth::user()->unfavorite($id);
         // 前のURLへリダイレクトさせる
         return back();
     }

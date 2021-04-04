@@ -23,6 +23,7 @@
     <li class="nav-item">
         <a href="{{ route('users.likes', ['id' => $user->id]) }}" class="nav-link {{ Request::routeIs('microposts.likes') ? 'active' : '' }}">
             Like
+            <span class="badge badge-secondary">{{ $user->favorites_count }}</span>
         </a>
     </li>
 </ul>
