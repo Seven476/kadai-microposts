@@ -20,4 +20,9 @@
             <span class="badge badge-secondary">{{ $user->followers_count }}</span>
         </a>
     </li>
+    <li class="nav-item">
+        <a href="{{ route('users.likes', ['id' => $user->id]) }}" class="nav-link {{ Request::routeIs('microposts.likes') ? 'active' : '' }}">
+            Like
+        </a>
+    </li>
 </ul>
